@@ -51,16 +51,23 @@ class Controlador{
     actualizarProductos = async (req,res) => {
         // 👀 LOG: params + body
         console.log('PUT /api/productos hit – params:', req.params, 'body keys:', Object.keys(req.body || {})) // <-- LOG
+        console.log('put /api/productos ejecutado');
+        console.log('params:', req.params);
+        console.log('body keys:', Object.keys(req.body || {}));
+        console.log('body:', req.body)
         try{
             const { id } = req.params
             const producto = req.body
 
             const productoActualizado = await this.servicio.actualizarProductos(id, producto)
+            console.log('productoActualizado:', productoActualizado)
             console.log('PUT productos -> respuesta servicio:', productoActualizado) // <-- LOG
             res.json(productoActualizado)
+          
         }
         catch(error){
             console.error('PUT productos ERROR:', error) // <-- LOG
+            console.error('error en actualizarProductos:', error);
             res.status(500).json({errMsg: error.message})
         }
     }

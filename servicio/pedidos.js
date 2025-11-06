@@ -1,7 +1,7 @@
 
 import config from '../config.js'
 import ModelFactory from '../model/DAOS/pedidos/pedidosFactory.js'
-import { validar } from './Validaciones/pedido.js'
+import { validar } from './validaciones/pedido.js'
 
 class Servicio {
     constructor(){

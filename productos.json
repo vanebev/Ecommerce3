@@ -1,0 +1,24 @@
+[
+	{
+		"nombre": "notebook",
+		"precio": 134000,
+		"stock": 13,
+		"marca": "Dell",
+		"categoria": "Dell14",
+		"detalles": " LATITUDE 5430 I7-1255U",
+		"foto": "https://www.comeros.com.ar/wp-content/uploads/2023/05/Latitude-5430.jpg",
+		"envio": true,
+		"id": "1"
+	},
+	{
+		"nombre": "consola",
+		"precio": 123000,
+		"stock": 12,
+		"marca": "sony",
+		"categoria": "consola de juegos",
+		"detalles": "ps4",
+		"foto": "https://m.media-amazon.com/images/I/61niTZ3ETRL._AC_SL1500_.jpg",
+		"envio": true,
+		"id": "3"
+	}
+]

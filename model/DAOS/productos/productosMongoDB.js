@@ -31,15 +31,23 @@ class ModelMongoDB {
     }
 
     actualizarProductos =async (id, producto)=> {
-         if(!CnxMongoDB.connectionOK) throw new Error('DAO sin conexion a MongoDB')
-        
-            await CnxMongoDB.db.collection('productos').updateOne(
-            {_id: ObjectId.createFromHexString(id)},
-            { $set: producto}
-        )
-        const productoActualizado = await this.obtenerProducto(id)
-        return productoActualizado
-    }
+         if(!CnxMongoDB.connectionOK) throw new Error('DAO sin conexión a MongoDB')
+         
+                 console.log(producto)            
+         
+                 try {
+                     await CnxMongoDB.db.collection('productos').updateOne(
+                         {_id: ObjectId.createFromHexString(id)},
+                         { $set: producto}
+                     )
+                 }
+                 catch(error) {
+                     console.log(error.message)
+                 }
+         
+                 const productoActualizado = await this.obtenerProducto(id)
+                 return productoActualizado
+             }
 
     eliminarProducto =async id => {
          if(!CnxMongoDB.connectionOK) throw new Error('DAO sin conexion a MongoDB')

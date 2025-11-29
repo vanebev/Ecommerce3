@@ -9,6 +9,11 @@ export const validar = producto => {
         marca: Joi.string().required(),
         categoria: Joi.string().required(),
         detalles: Joi.string().required(),
+        descripcionCorta: Joi.string().min(3).max(200).required(),
+        descripcionLarga: Joi.string().min(3).max(1000).required(),
+        edadDesde: Joi.number().integer().min(0).max(99).required(),
+        edadHasta: Joi.number().integer().min(0).max(99).required(),
+        
         foto: Joi.string().required(),
         envio: Joi.boolean().required(),
     })

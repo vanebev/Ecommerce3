@@ -14,9 +14,10 @@ class CnxMongoDB{
            CnxMongoDB.connectionOK = true
            CnxMongoDB.db = client.db(config.BASE)
         }
-        catch(error){
-            console.log(`[ERROR] Error en conexion de base de datos: ${error.message}`)
-        }
+        catch (error) {
+        console.log(`[ERROR] Error en conexión de base de datos: ${error.message}`)
+        throw new Error(' No se pudo conectar a MongoDB. Revisa STRCNX o la red.')
+    }
     }
 
 }

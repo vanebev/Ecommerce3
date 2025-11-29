@@ -9,7 +9,7 @@ class ModelMongoDB {
     obtenerPedidos =async () => {
         if(!CnxMongoDB.connectionOK) throw new Error('DAO sin conexion a MongoDB')
         
-       const pedidos = CnxMongoDB.db.collection('pedidos').find({}).toArray()
+       const pedidos = await CnxMongoDB.db.collection('pedidos').find({}).toArray()
        return pedidos
     }
     

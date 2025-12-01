@@ -37,6 +37,7 @@ class Controlador {
             res.status(500).json({ errMsg: 'Error al guardar el pedido' })
         }
     }
+    
 
     createPreference = async (req, res) => {
         try {
@@ -44,7 +45,7 @@ class Controlador {
             const preferenceId = await this.servicio.createPreference(datos)
             res.json(preferenceId)
         } catch (error) {
-            console.error('POST /api/pedidos/preference ERROR:', error.message)
+            console.error('POST /api/pedidos/mp/create_preference ERROR:', error.message)
             res.status(500).json({ errMsg: 'Error al crear la preferencia de pago' })
         }
     }

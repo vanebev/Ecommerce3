@@ -20,12 +20,6 @@ class Controlador {
     try {
         const producto = req.body
 
-        // 👀 SOLO este console.log para ver qué llega
-        console.log('POST /api/productos body:', producto)
-
-        // 🔹 Sacamos el Object.keys(...) que explota
-        // if(!Object.keys(producto).length) throw new Error('El producto esta vacio')
-
         const productoGuardado = await this.servicio.guardarProductos(producto)
         res.json(productoGuardado)
     }

@@ -41,7 +41,6 @@ class ModelMongoDB {
 
 
             const productoActualizado = await this.obtenerProducto(id)
-            console.log(' DAO retorna:', productoActualizado)
             return productoActualizado
         } catch (error) {
             console.error('Error en updateOne:', error)

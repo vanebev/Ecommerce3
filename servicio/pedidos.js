@@ -1,3 +1,4 @@
+// backend/servicio/pedidos.js
 import ModelMongoDB from '../model/DAOS/pedidos/pedidosMongoDB.js'
 import { validar } from './validaciones/pedido.js'
 import { preference } from './pago.js'
@@ -26,13 +27,14 @@ class Servicio {
     createPreference = async datos => {
         try {
             const preferences = await preference.create(datos.prefItems)
-            const preferenceId = preferences.id
-            return preferenceId
+            return preferences.id
         } catch (error) {
             console.error('Error en createPreference:', error.message)
-            throw new Error('Error al crear la preferencia de pago')
+            throw error
         }
     }
+
+
 }
 
 export default Servicio

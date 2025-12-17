@@ -1,23 +1,34 @@
-import express from 'express'
-import multer from 'multer'
+ import express from 'express'
+ import multer from 'multer'
+
 import Controlador from '../controlador/upload.js'
 
-const upload = multer({ storage: multer.memoryStorage() })
 
-class Router {
-  #controlador
+const storage =  multer.diskStorage({
+    destination: (req, file, cb)=> {
+        cb(null, './public/uploads')
 
-  constructor() {
-    this.#controlador = new Controlador()
-  }
+    },
+    filename: (req, file, cb) =>{
+        cb(null, `${Date.now()}-${file.originalname}` )
 
-  config() {
-    const router = express.Router()
+    }
+})
+const upload = multer({storage: storage})
 
-    router.post('/', upload.single('archivo'), this.#controlador.recibirArchivo)
+ 
+ class Router {
+    #controlador = null
 
-    return router
-  }
+    constructor(){
+        this.#controlador = new Controlador()
+    }
+    config(){
+       const router = express.Router()
+
+        router.post('/', upload.single('archivo'), this.#controlador.recibirArchivo) 
+    
+        return router
+    }
 }
-
 export default Router

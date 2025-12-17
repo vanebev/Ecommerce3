@@ -1,21 +1,19 @@
-import Servicio from '../servicio/upload.js'
+import cloudinary from '../cloudinary.js'
 
-class Controlador {
-  constructor() {
-    this.servicio = new Servicio()
-  }
+class Servicio {
+  async recibirArchivo(file) {
+    if (!file) {
+      throw new Error('No se recibió archivo')
+    }
 
-  recibirArchivo = async (req, res) => {
-    try {
-      const file = req.file
+    const result = await cloudinary.uploader.upload(
+      `data:${file.mimetype};base64,${file.buffer.toString('base64')}`
+    )
 
-      const { urlFoto } = await this.servicio.recibirArchivo(file)
-
-      res.json({ urlFoto })
-    } catch (error) {
-      res.status(500).json({ errMsg: error.message })
+    return {
+      urlFoto: result.secure_url
     }
   }
 }
 
-export default Controlador
+export default Servicio
